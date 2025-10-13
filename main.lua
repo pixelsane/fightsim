@@ -16,11 +16,14 @@ end
 
 -- TESTING
 
-local function printMatchAction(match)
-	print("Blue does " .. match.blueAction)
-	print("while Red does " .. match.redAction)
+local function printMatchAction(pmatch)
+	print("Blue does " .. pmatch.blueAction)
+	print("while Red does " .. pmatch.redAction)
 
-	print("Blue Health: " .. match.blue.health .. " | " .. "Red Health: " .. match.red.health)
+	print("Blue Health: " .. pmatch.blue.health .. " | " .. "Red Health: " .. pmatch.red.health)
+	if pmatch.winner ~= nil then
+		print("Winner: " .. pmatch.winner)
+	end
 end
 
 local timer = 0

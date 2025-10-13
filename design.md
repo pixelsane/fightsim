@@ -28,7 +28,7 @@ Strategies:
 A fight plan mapping.
 This will be done through coaching and the variability of following the plan depends on discipline.
 
-User will have to generate strategies, and they can base it off of what recent matches and by watching the opponent's strategies.
+User will have to generate strategies, and they can base it off of recent match stats and by watching the opponent's strategies.
 
 Players can build a fight plan against a character by attacking low, reducing speed and moving out of the range, and set counters.
 
