@@ -1,17 +1,17 @@
 CurrentMatch = nil -- move to a main state handler later
 
-local fighter = require("data.fighter")
-local match = require("data.match")
-local turn = require("combat.turn")
+local Fighter = require("data.fighter")
+local Match = require("data.match")
+local Turn = require("combat.turn")
 
 function love.load()
 	math.randomseed(os.time())
 	love.window.setTitle("Fighter's Road!")
 
-	local fighter1 = fighter.create()
-	local fighter2 = fighter.create()
+	local fighter1 = Fighter.create()
+	local fighter2 = Fighter.create()
 
-	CurrentMatch = match.create(fighter1, fighter2)
+	CurrentMatch = Match.create(fighter1, fighter2)
 end
 
 -- TESTING
@@ -30,7 +30,7 @@ local timer = 0
 function love.update(dt)
 	timer = timer + dt
 	if timer >= 1.5 then
-		turn.resolve(CurrentMatch)
+		Turn.resolve(CurrentMatch)
 		printMatchAction(CurrentMatch)
 		timer = 0
 	end

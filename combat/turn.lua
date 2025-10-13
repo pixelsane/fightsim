@@ -1,35 +1,35 @@
 local utils = require("combat.utils")
-local conditions = require("combat.conditions")
-local fighter = require("data.fighter")
+local Conditions = require("combat.conditions")
+local Fighter = require("data.fighter")
 
 local turn = {}
-local determineAction = conditions.determineAction
+local determineAction = Conditions.determineAction
 
 local function calculateDamage(defender, attacker, attackAction, defendAction)
 	local blockModifier = 1
 	if attackAction == "high_attack" then
 		if defendAction == "high_defend" then
-			blockModifier = fighter.baseHATK * attacker.strength
+			blockModifier = Fighter.baseHATK * attacker.strength
 		elseif defendAction == "mid_defend" then
 			blockModifier = 1.25
 		end
-		defender.health = defender.health - ((fighter.baseHATK * attacker.strength) / blockModifier)
+		defender.health = defender.health - ((Fighter.baseHATK * attacker.strength) / blockModifier)
 	elseif attackAction == "mid_attack" then
 		if defendAction == "high_defend" then
 			blockModifier = 1.15
 		elseif defendAction == "mid_defend" then
-			blockModifier = fighter.baseMATK * attacker.strength
+			blockModifier = Fighter.baseMATK * attacker.strength
 		elseif defendAction == "low_defend" then
 			blockModifier = 1.15
 		end
-		defender.health = defender.health - ((fighter.baseMATK * attacker.strength) / blockModifier)
+		defender.health = defender.health - ((Fighter.baseMATK * attacker.strength) / blockModifier)
 	elseif attackAction == "low_attack" then
 		if defendAction == "mid_defend" then
 			blockModifier = 1.25
 		elseif defendAction == "low_defend" then
-			blockModifier = fighter.baseMATK * attacker.strength
+			blockModifier = Fighter.baseMATK * attacker.strength
 		end
-		defender.health = defender.health - ((fighter.baseLATK * attacker.strength) / blockModifier)
+		defender.health = defender.health - ((Fighter.baseLATK * attacker.strength) / blockModifier)
 	else
 		error("Cannot determine Attack Action!")
 	end
@@ -38,9 +38,8 @@ end
 local function resolveDamage(match)
 	local redAttacks = utils.isAttacking(match.redAction)
 	local blueAttacks = utils.isAttacking(match.blueAction)
-	-- local blueDefends = utils.isDefending(match.blueAction)
-	local redFighter = match.red
 	local blueFighter = match.blue
+	local redFighter = match.red
 
 	if redAttacks then
 		calculateDamage(blueFighter, redFighter, match.redAction, match.blueAction)
