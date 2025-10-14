@@ -7,6 +7,7 @@ local Turn = require("combat.turn")
 function love.load()
 	math.randomseed(os.time())
 	love.window.setTitle("Fighter's Road!")
+	love.graphics.setBackgroundColor(0.5, 0.5, 0.5)
 
 	local fighter1 = Fighter.create()
 	local fighter2 = Fighter.create()
@@ -37,5 +38,7 @@ function love.update(dt)
 end
 
 function love.draw()
-	love.graphics.circle("fill", 30, 30, 50)
+	local width = love.graphics.getWidth()
+	local y = 400
+	love.graphics.line(0, y, width, y)
 end

@@ -4,7 +4,7 @@ function match.create(fighter1, fighter2)
 	local newMatch = {
 		winner = nil,
 		blueDistance = 0,
-		redDistance = 0,
+		redDistance = 10,
 		turn = 0,
 		blue = fighter1,
 		red = fighter2,
