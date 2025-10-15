@@ -1,0 +1,5 @@
+*.o
+./c_rewrite/fightsim
+fightsim
+.DS_Store
+*.swp
