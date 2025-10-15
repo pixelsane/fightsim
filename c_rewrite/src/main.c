@@ -8,14 +8,15 @@ typedef struct {
 GameState gameState;
 
 void setCurrentMatch(Match match) {
-  gameState.currentMatch = match; // consider allocating later if i ever decide to be a lazy person and just mutate the values and add a getter zzz
+  gameState.currentMatch = match;
 };
 
 int main(void) {
-  Fighter fighter1;
-  Fighter fighter2;
+  Fighter fighter1 = initFighter();
+  Fighter fighter2 = initFighter();
   Match currentMatch = createMatch(fighter1, fighter2);
 
   setCurrentMatch(currentMatch);
+  printf("Fighter1 Health: %f\n", fighter1.health);
 
 }

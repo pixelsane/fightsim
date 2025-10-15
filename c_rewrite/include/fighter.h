@@ -9,11 +9,14 @@ typedef enum {
 } Side;
 
 typedef struct {
-  float health, 
-        focus, 
-        speed, 
-        strength, 
-        defense;
+  int health;
+  int stamina;
+  int speed;
+  int strength;
+  int defense;
 } Fighter;
+
+
+Fighter initFighter();
 
 #endif

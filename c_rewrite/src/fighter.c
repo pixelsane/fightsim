@@ -9,7 +9,7 @@ float defense_max = 5;
 Fighter initFighter() {
   Fighter newFighter = {
     health: 100,
-    focus: 50
+    stamina: 50
   };
 
   newFighter.speed = (float)rand() / speed_max;
