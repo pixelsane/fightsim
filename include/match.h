@@ -26,5 +26,8 @@ typedef struct {
 } Match;
 
 Match createMatch(Fighter blue, Fighter red);
+bool isAttacking(Action a);
+bool isDefending(Action a);
+bool isDefended(Action a, Action b);
 
 #endif

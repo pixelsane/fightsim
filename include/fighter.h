@@ -3,9 +3,9 @@
 
 typedef enum {
   NONE,
-  RED,
-  BLUE,
-  DRAW
+  Red,
+  Blue,
+  Draw
 } Side;
 
 typedef struct {

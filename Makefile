@@ -12,13 +12,17 @@ all: $(TARGET)
 # ugh i hate writing makefiles
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET) -lraylib -lm
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(TARGET)
+
+
+crun: all clean
+	./$(TARGET)
 
 run: all
 	./$(TARGET)

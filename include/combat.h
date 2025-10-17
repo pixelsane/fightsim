@@ -3,6 +3,6 @@
 
 #include "match.h"
 
-void resolveTurn(Match match);
+void resolveTurn(Match *match);
 
 #endif

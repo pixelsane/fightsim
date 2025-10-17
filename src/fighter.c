@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-float speed_max = 5;
-float strength_max = 5;
-float defense_max = 5;
+int speed_max = 5;
+int strength_max = 5;
+int defense_max = 5;
 
 Fighter initFighter() {
   Fighter newFighter = {
@@ -12,8 +12,8 @@ Fighter initFighter() {
     stamina: 50
   };
 
-  newFighter.speed = (float)rand() / speed_max;
-  newFighter.strength = (float)rand() / strength_max;
-  newFighter.defense = (float)rand() / defense_max;
+  newFighter.speed = rand() % speed_max;
+  newFighter.strength = rand() % strength_max;
+  newFighter.defense = rand() % defense_max;
   return newFighter;
 };
