@@ -29,6 +29,3 @@ clean:
 
 run: all
 	./$(TARGET)
-
-crun: all clean
-	./$(TARGET)
