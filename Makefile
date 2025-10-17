@@ -1,28 +1,34 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -O2 -Iinclude
-GAME_NAME = fightsim 
+CFLAGS_RELEASE = -Wall -Wextra -O2 -Iinclude
+CFLAGS_DEBUG   = -Wall -Wextra -O1 -g -fsanitize=address -Iinclude
+
+GAME_NAME = fightsim
 
 SRC_DIR = src
 SRCS = $(wildcard $(SRC_DIR)/*.c)
 OBJS = $(SRCS:.c=.o)
 
 TARGET = $(GAME_NAME)
-all: $(TARGET)
 
-# ugh i hate writing makefiles
+all: release
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET) -lraylib -lm
+release: CFLAGS = $(CFLAGS_RELEASE)
+release: $(TARGET)
+
+debug: CFLAGS = $(CFLAGS_DEBUG)
+debug: clean $(TARGET)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET) -lraylib -lm
+
 clean:
 	rm -f $(OBJS) $(TARGET)
 
-
-crun: all clean
+run: all
 	./$(TARGET)
 
-run: all
+crun: all clean
 	./$(TARGET)

@@ -4,8 +4,8 @@
 
 void dealDamage(Fighter *attacker, Fighter *defender, Action actionAttacker, Action actionDefender) {
   int modifier = 1;
-  bool isWaiting = actionAttacker.type == Wait;
 
+  bool isWaiting = actionAttacker.type == Wait;
   bool defendSuccess = isDefended(actionAttacker, actionDefender);
 
   if (!defendSuccess && !isWaiting) {
@@ -34,6 +34,7 @@ void resolveAttacks(Match *match) {
 }
 
 void resolveTurn(Match *match) {
+  if (!match) return; // JIC, so i wouldn't lose my sanity itf
   resolveAttacks(match);
   reduceEnergies(match);
 }
