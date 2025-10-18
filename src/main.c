@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include <raylib.h>
 #include "match.h"
 #include "combat.h"
@@ -16,6 +18,7 @@ void setCurrentMatch(Match match) {
 };
 
 void init() {
+  srand((unsigned int)time(NULL));
   InitWindow(1280, 720, "Fight Sim");
   Match currentMatch = createMatch(initFighter(), initFighter());
   setCurrentMatch(currentMatch);

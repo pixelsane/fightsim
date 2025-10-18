@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include "decision.h"
 #include "match.h"
 
 bool isAttacking(Action a) {
@@ -50,7 +51,8 @@ void resolveAttacks(Match *match) {
 
 void resolveTurn(Match *match) {
   if (!match) return; // JIC, so i wouldn't lose my sanity itf
+  generateActions(match);
   resolveAttacks(match);
+  //resolveSpecials(match);
   reduceEnergies(match);
-  //resolveSpecials(match);k
 }

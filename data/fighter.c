@@ -6,6 +6,7 @@ int speed_max = 5;
 int strength_max = 5;
 int defense_max = 5;
 
+
 Fighter initFighter() {
   Fighter newFighter = {
     health: 100,

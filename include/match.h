@@ -4,6 +4,12 @@
 #include "fighter.h"
 
 typedef enum {
+  Attack,
+  Defend,
+  Special
+} ActionTriad;
+
+typedef enum {
   Wait,
   SpecialAttack,
   SpecialDefend,
@@ -26,8 +32,5 @@ typedef struct {
 } Match;
 
 Match createMatch(Fighter blue, Fighter red);
-bool isAttacking(Action a);
-bool isDefending(Action a);
-bool isDefended(Action a, Action b);
 
 #endif
