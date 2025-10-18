@@ -2,6 +2,21 @@
 #include <stdbool.h>
 #include "match.h"
 
+bool isAttacking(Action a) {
+    return a.type == HighAttack || a.type == MidAttack || a.type == LowAttack;
+}
+
+bool isDefending(Action a) {
+    return a.type == HighDefend || a.type == MidDefend || a.type == LowDefend;
+}
+
+bool isDefended(Action a, Action b) {
+    return 
+      (a.type == HighAttack && b.type == HighDefend) || 
+      (a.type == MidAttack && b.type == MidDefend) ||
+      (a.type == LowAttack && b.type == LowDefend);
+}
+
 void dealDamage(Fighter *attacker, Fighter *defender, Action actionAttacker, Action actionDefender) {
   int modifier = 1;
 
@@ -37,4 +52,5 @@ void resolveTurn(Match *match) {
   if (!match) return; // JIC, so i wouldn't lose my sanity itf
   resolveAttacks(match);
   reduceEnergies(match);
+  //resolveSpecials(match);k
 }

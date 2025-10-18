@@ -4,8 +4,8 @@ CFLAGS_DEBUG   = -Wall -Wextra -O1 -g -fsanitize=address -Iinclude
 
 GAME_NAME = fightsim
 
-SRC_DIR = src
-SRCS = $(wildcard $(SRC_DIR)/*.c)
+SRC_DIRS = src data
+SRCS = $(wildcard $(addsuffix /*.c, $(SRC_DIRS)))
 OBJS = $(SRCS:.c=.o)
 
 TARGET = $(GAME_NAME)
