@@ -17,23 +17,42 @@ ActionTriad generatePrimaryDecision(PrimaryDecisionOdds pOdds) {
   }
 }
 
+Action decideAttack() {
+  Action action;
+  int roll = rand() % 3;
+  ActionType attacks[3] = {HighAttack, MidAttack, LowAttack};
+  ActionType attackRolled = attacks[roll];
+  action.type = attackRolled;
+  action.staminaCost = 5; // getStaminaCost()
+
+  return action;
+}
+
+Action decideDefend() {
+  Action action;
+  int roll = rand() % 3;
+  ActionType defends[3] = {HighDefend, MidDefend, LowDefend};
+  ActionType defendRolled = defends[roll];
+  action.type = defendRolled;
+  action.staminaCost = 5; // getStaminaCost()
+
+  return action;
+}
+
 Action decideAction(PrimaryDecisionOdds pOdds) {
   Action finalDecision;
   ActionTriad primaryDecision = generatePrimaryDecision(pOdds);
 
   if(primaryDecision == Attack) {
-    // actual shit: decideAttack()
-    finalDecision.type = HighAttack;
-    finalDecision.staminaCost = 5;
+    finalDecision = decideAttack(); // send attack odds later, default is 33%
   } else if(primaryDecision == Defend) {
-    finalDecision.type = HighDefend;
-    finalDecision.staminaCost = 0;
+    finalDecision = decideDefend(); // send defend odds later, default is 33%
   }
   return finalDecision;
 }
 
 void generateActions(Match *match) {
-  // this should be dynamic soon
+  // this should be dynamic soon, should come from tactic cards and coaching modifier stack
   PrimaryDecisionOdds pOdds = {
     attack: 5,
     defend: 5

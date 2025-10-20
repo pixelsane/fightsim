@@ -20,6 +20,7 @@ void setCurrentMatch(Match match) {
 void init() {
   srand((unsigned int)time(NULL));
   InitWindow(1280, 720, "Fight Sim");
+
   Match currentMatch = createMatch(initFighter(), initFighter());
   setCurrentMatch(currentMatch);
 
